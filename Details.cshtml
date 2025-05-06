@@ -1,25 +1,14 @@
-﻿@model WebApplication8.Models.Hospital
+﻿@model WebApplication8.Models.Patient
 
 @{
-    ViewBag.Title = "Hospital Details";
-    var doctors = ViewBag.Doctors as List<WebApplication8.Models.Doctor>;
+    ViewBag.Title = "Patient Details";
 }
 
-<h2>Hospital Details</h2>
+<h2>Patient Details</h2>
 
 <p><strong>Name:</strong> @Model.Name</p>
-<p><strong>Location:</strong> @Model.Address</p>
-
-<h4>Doctors</h4>
-<ul>
-    @foreach (var doctor in doctors)
-    {
-        if (doctor.HospitalId == Model.Id)
-        {
-            <li>@doctor.Name - @doctor.Specialization</li>
-        }
-    }
-</ul>
+<p><strong>Code:</strong> @Model.PatientCode</p>
+<p><strong>Gender:</strong> @Model.Gender</p>
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

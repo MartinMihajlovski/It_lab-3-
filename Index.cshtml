@@ -1,29 +1,31 @@
-﻿@model List<WebApplication8.Models.Hospital>
+﻿@model List<WebApplication8.Models.Patient>
 
 @{
-    ViewBag.Title = "Hospitals";
+    ViewBag.Title = "Patients";
 }
 
-<h2>Hospitals</h2>
+<h2>Patients</h2>
 <p>
-    @Html.ActionLink("Create New Hospital", "Create")
+    @Html.ActionLink("Create New Patient", "Create")
 </p>
 
 <table class="table">
     <tr>
         <th>Name</th>
-        <th>Location</th>
+        <th>Code</th>
+        <th>Gender</th>
         <th>Actions</th>
     </tr>
-    @foreach (var hospital in Model)
+    @foreach (var item in Model)
     {
         <tr>
-            <td>@hospital.Name</td>
-            <td>@hospital.Address</td>
+            <td>@item.Name</td>
+            <td>@item.PatientCode</td>
+            <td>@item.Gender</td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = hospital.Id }) |
-                @Html.ActionLink("Edit", "Edit", new { id = hospital.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = hospital.Id })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
     }

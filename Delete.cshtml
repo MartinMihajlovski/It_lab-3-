@@ -1,17 +1,18 @@
-﻿@model WebApplication8.Models.Hospital
+﻿@model WebApplication8.Models.Patient
 
 @{
-    ViewBag.Title = "Delete Hospital";
+    ViewBag.Title = "Delete Patient";
 }
 
-<h2>Delete Hospital</h2>
+<h2>Delete Patient</h2>
 
-<p>Are you sure you want to delete this hospital?</p>
+<p>Are you sure you want to delete this patient?</p>
 
 <p><strong>Name:</strong> @Model.Name</p>
-<p><strong>Location:</strong> @Model.Address</p>
+<p><strong>Code:</strong> @Model.PatientCode</p>
+<p><strong>Gender:</strong> @Model.Gender</p>
 
-@using (Html.BeginForm("ConfirmDelete", "Hospitals", new { id = Model.Id }, FormMethod.Post))
+@using (Html.BeginForm("ConfirmDelete", "Patients", new { id = Model.Id }, FormMethod.Post))
 {
     <input type="submit" value="Delete" class="btn btn-danger" />
     @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary" })

@@ -1,0 +1,27 @@
+﻿@model WebApplication8.Models.Doctor
+
+@{
+    ViewBag.Title = "Edit Doctor";
+}
+
+<h2>Edit Doctor</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(d => d.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(d => d.Name)
+        @Html.TextBoxFor(d => d.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(d => d.Specialization)
+        @Html.TextBoxFor(d => d.Specialization, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Hospital")
+        @Html.DropDownList("HospitalId", (SelectList)ViewBag.Hospitals, "Select Hospital", new { @class = "form-control" })
+    </div>
+
+    <input type="submit" value="Save" class="btn btn-primary" />
+}

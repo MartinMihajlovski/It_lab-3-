@@ -1,0 +1,31 @@
+﻿@model WebApplication8.Models.Doctor
+
+@{
+    ViewBag.Title = "Doctor Details";
+    var hospital = ViewBag.Hospital as WebApplication8.Models.Hospital;
+    var patients = ViewBag.AllPatients as List<WebApplication8.Models.Patient>;
+}
+
+<h2>Doctor Details</h2>
+
+<p><strong>Name:</strong> @Model.Name</p>
+<p><strong>Specialization:</strong> @Model.Specialization</p>
+<p><strong>Hospital:</strong> @hospital?.Name</p>
+
+<h4>Patients</h4>
+<ul>
+    @foreach (var pid in Model.PatientIds)
+    {
+        var patient = patients?.FirstOrDefault(p => p.Id == pid);
+        if (patient != null)
+        {
+            <li>@patient.Name (@patient.PatientCode)</li>
+        }
+    }
+</ul>
+
+<p>
+    @Html.ActionLink("Add Patient", "AddPatient", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

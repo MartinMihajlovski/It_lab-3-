@@ -1,0 +1,34 @@
+﻿@model List<WebApplication8.Models.Doctor>
+
+@{
+    ViewBag.Title = "Doctors";
+    var hospitals = ViewBag.Hospitals as List<WebApplication8.Models.Hospital>;
+}
+
+<h2>Doctors</h2>
+<p>
+    @Html.ActionLink("Create New Doctor", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Specialization</th>
+        <th>Hospital</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var doctor in Model)
+    {
+        var hospital = hospitals?.FirstOrDefault(h => h.Id == doctor.HospitalId);
+        <tr>
+            <td>@doctor.Name</td>
+            <td>@doctor.Specialization</td>
+            <td>@hospital?.Name</td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = doctor.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = doctor.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = doctor.Id })
+            </td>
+        </tr>
+    }
+</table>

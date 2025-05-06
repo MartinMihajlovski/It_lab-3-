@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Add Patient to Doctor";
+    var doctor = ViewBag.Doctor as WebApplication8.Models.Doctor;
+}
+
+<h2>Add Patient to Dr. @doctor.Name</h2>
+
+@using (Html.BeginForm("AddPatient", "Doctors", FormMethod.Post))
+{
+    @Html.Hidden("doctorId", doctor.Id)
+    <div class="form-group">
+        @Html.Label("Select Patient")
+        @Html.DropDownList("patientId", (SelectList)ViewBag.Patients, new { @class = "form-control" })
+    </div>
+    <input type="submit" value="Add" class="btn btn-primary" />
+}
